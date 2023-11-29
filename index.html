@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+    
+	<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+    <title>Bulls-Caws</title>
+    <link href="style/jquery-ui-1.8.10.custom.css" rel="stylesheet" type="text/css" />
+    <link href="style/main.css" rel="stylesheet" type="text/css" />
+	
+	<script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript"></script>
+    <script src="js/mycode.js" type="text/javascript"></script>
+    
+    
+</head>
+
+<body>
+
+<div class="containerGlobal">
+<div class="header"></div>
+<div id="top">
+<button id="newGameBtn" name="newGameBtn" style="margin:4px 0px 0px 20px; width:150px;">Новая игра</button>
+<button id="giveupBtn" name="giveupBtn" style="margin:4px 0px 0px 20px; width:150px;">Сдаться</button>
+<!--<b> загадано</b>--><button id="gameRulesBtn" name="gameRulesBtn" style="margin:4px 0px 0px 280px; width:150px;">Правила игры</button>
+</div>
+<div class="content">
+
+<div id="noGame" style="color:#cc0000; font-weight:bolder; font-size:24px; text-align:center;">This game is based on javascript. No javascript - no game. Please check the preferences and turn on javascript.</div>
+
+<div  id="hidden" style="display:none;">
+<div class="leftPanel">
+<form name="main" id="mainForm">
+
+<div id="radio" class="myradio">
+<input id="level3" name="level" value="three" type="radio" checked="checked" /><label for="level3">3 цифры</label>
+<input id="level4" name="level" value="four" type="radio" /><label for="level4">4 цифры</label>
+<input id="level5" name="level" value="five" type="radio" /><label for="level5">5 цифр</label>
+</div>
+
+<br/>
+
+<input id="yourNumber" name="guess" type="text" maxlength="3" autocomplete="off" /><br/>
+
+<input id="goBtn" name="goBtn" type="submit" value="Проверить"/>
+</form>
+<div class="stado"></div>
+
+</div>
+
+
+<div class="rightPanel">
+<div id="title">Results:</div>
+<div class="yourResults" id="results"></div>
+<div id="someText"></div>
+</div>
+
+<div class="cf"></div>
+
+    <div id="winner-dialog" title="Yes!">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Поздравляю! Вы победили!</p>
+    </div>
+    
+    <div id="giveup-dialog" title="Хотите сдаться?">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Вы так хорошо начали и, все-таки, хотите сдаться?</p>
+    </div>
+    
+    <div id="newGame-dialog" title="Новая игра">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Вы хотите начать новую игру?</p>
+    </div>
+    
+    <div id="numberDialog" title="Загаданное число">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		It was a realy odd number :)
+	</p>
+	</div>
+    
+    <div id="shortNumber" title="Ошибка">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Вы ввели слишком короткое число. Попытайтесь еще раз.
+	</p>
+	</div>
+    
+    <div id="sameFigure" title="Ошибка">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Цифры в числе не должны быть одинаковыми.
+	</p>
+	</div>
+    
+    <div id="empty" title="Ошибка">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+		Введите свое число.<br/>Поле не должно быть пустым.
+	</p>
+	</div>
+    
+    <div id="gameRules-dialog" title="Правила игры">
+	
+		<p><b>ПРАВИЛА</b></p>
+        <p>Компьютер загадывает трех-, четырех- или пятизначное число с неповторяющимися цифрами. Разрядность (длину) числа Вы выбираете сами в начале игры. Число, загаданное компьютером, МОЖЕТ начинаться с нуля.</p>
+        <p>Ваша цель - угадать загаданное число, сделав как можно меньше попыток.</p>
+        <p>Вы вводите свое число в поле и нажимаете на кнопку "Проверить". В ответ, компьютер сообщает, были ли совпадения и, если были, то сколько.</p>
+        <p>Проверяется каждая цифра в числе. Если в вашем числе есть цифра, которая так же есть в числе, загаданном компьютером, то эта цифра называется "коровой", но если эта цифра к тому же еще и стоит на той же самой позиции, что и в загаданном числе, то такая цифра называется "быком". Не расстраивайтесь, если вы не попали и не получили ни одного быка и ни одной коровы - это очень хороший результат, ведь в таком случае Вы уже точно можете сказать, что этих цифр в загаданном числе нет.</p>
+        <br/>
+        <p><b>ПРИМЕР</b></p>
+		<p>Загаданное компьютером число - '3219'.</p>
+		<p>Ваша попытка - '2310'.</p>
+		<p>Результат - две «коровы» (цифры '2' и '3' угаданы, но они стоят на неверных позициях) и один «бык» (цифра '1' угадана вплоть до позиции).</p>
+        <br/>
+        <p><b>ИСПОЛЬЗУЕМЫЕ ОБОЗНАЧЕНИЯ</b></p>
+        <p><img src="style/images/bull.png" alt="bull" width="30" height="30" style="display:block; float:left;"/>&nbsp;<span style="display:block; float:left; margin-top:5px;">&nbsp;&nbsp;- бык</span></p>
+        <br/><p><img src="style/images/cow.png" alt="cow" width="30" height="30" style="display:block; float:left;"/><span style="display:block; float:left; margin-top:5px;">&nbsp;&nbsp;- корова</span></p>
+		<br/><br/><p><img src="style/images/nothing.png" alt="nothing" width="30" height="30" style="display:block; float:left;"/><span style="display:block; float:left; margin-top:5px;">&nbsp;&nbsp;- ничего</span></p>
+	
+	</div>
+    
+    <!--<div id="numberDialog" title="Basic dialog">
+	<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    </div>-->
+
+
+
+
+
+</div>
+
+</div>
+
+<div class="footer"></div>
+
+
+
+</div>
+</body>
+</html>

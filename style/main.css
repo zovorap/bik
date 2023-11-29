@@ -1,0 +1,28 @@
+body { background:#eeeeee; font-family:Verdana, Geneva, sans-serif; font-size:12px;}
+.containerGlobal { margin:0 auto; width:800px; border:#666 1px solid; }
+
+.header { background:url(images/header.png) 0 0 no-repeat; height:150px;}
+.content { background:#dddddd;}
+.footer { height:50px; border-top:#6F5D42 3px solid;}
+
+#top {height:38px; background-color:#ffffff; border-bottom:#6F5D42 3px solid; border-top:#6F5D42 3px solid;}
+form{border-bottom:#999 2px solid; margin:10px 20px; width:330px; padding-top:30px; padding-bottom:25px;}
+#yourNumber { background-color:#ffffff; width:105px; text-align:center; border:#dddddd 1px solid; font-size:25px; font-weight:bolder; margin:15px 0 0 108px;}
+#goBtn { width:105px; margin:15px 0 0 108px;}
+.yourResults { margin:7px 20px 0 20px; }
+#newGameBtn { margin:15px 0 0 0; width:180px; height:30px;}
+#choose {font-weight:bolder; background-color: #dddddd; border: none;}
+
+.bull-cow { width:30px; height:30px; display:inline;}
+#giveup-dialog, #numberDialog { display: none;}
+
+#gameRules-dialog p { margin:5px 10px 0 20px; }
+.leftPanel, .rightPanel {float:left; width:400px;}
+
+.cf{ clear:both;}
+#title{ color:#6F5D42; font-size:15px; margin:11px 20px; 0 20px; font-weight:bolder; border-bottom:#6F5D42 1px solid;}
+.number {display:block; float:left; width:70px; height:24px; font-size:16px; padding:6px 0 0 7px; font-weight:bolder; color:#153793; display:inline;}
+.string {background:#eeeeee; margin-bottom:5px; height:30px;}
+.stado { background:url(images/stado.png) no-repeat; width:340px; height:81px; margin:0 0 15px 20px;}
+#someText {background:#eeeeee; margin:20px; height:270px;}
+
